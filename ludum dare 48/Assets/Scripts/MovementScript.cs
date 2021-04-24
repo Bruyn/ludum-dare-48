@@ -24,22 +24,30 @@ public class MovementScript : MonoBehaviour
     {
         float horAxis = Input.GetAxis("Horizontal");
         float vertAxis = Input.GetAxis("Vertical");
-        
         Vector3 movementVector = new Vector3(horAxis, 0, vertAxis);
         movementVector.Normalize();
-        
-        _rigidbody.MovePosition(_rigidbody.transform.position + movementVector * (Movementspeed * Time.deltaTime));
+
+        Vector3 transformedMovement = _camera.transform.TransformVector(movementVector);        
+        _rigidbody.MovePosition(_rigidbody.transform.position + transformedMovement * (Movementspeed * Time.deltaTime));
         
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         Physics.Raycast(ray, out hit, 100f, screenRayMask.value);
         _mousePosition = hit.point;
-
-        Vector3 lookingDirection = (_mousePosition - transform.position).normalized;
-        transform.rotation = Quaternion.LookRotation(lookingDirection);
         
-        Animator.SetFloat("MovementSpeed", movementVector.magnitude);
+        Vector3 lookingDirection = (_mousePosition - transform.position).normalized;
+        lookingDirection.y = 0;
+        transform.rotation = Quaternion.LookRotation(lookingDirection);
+
+        Vector3 movementX = new Vector3(horAxis, 0, 0);
+        Vector3 movementZ = new Vector3(0, 0, vertAxis);
+        
+        Vector3 lookingX = new Vector3(lookingDirection.x, 0, 0);
+        Vector3 lookingZ = new Vector3(0, 0, lookingDirection.z);
+        
+        
+        // Animator.SetFloat("MovementSpeed", movementVector.magnitude);
     }
     
 }
