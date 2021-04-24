@@ -1,4 +1,4 @@
-Shader "Custom/WallStandart"
+Shader "Custom/WallShader"
 {
     Properties
     {

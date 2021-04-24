@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSphere : MonoBehaviour
+public class TransparentSphere : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public GameObject sphere;
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +22,5 @@ public class TestSphere : MonoBehaviour
                 sphere.SetActive(true);
             }
         }
-        
-        
     }
 }

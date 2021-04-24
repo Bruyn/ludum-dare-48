@@ -1,4 +1,4 @@
-Shader "Unlit/Sphere"
+Shader "Unlit/SphereShader"
 {
     Properties
     {
@@ -7,7 +7,7 @@ Shader "Unlit/Sphere"
     SubShader
     {
         Tags { "RenderType"="Opaque" }
-        LOD 100
+        //LOD 100
         ColorMask 0
         ZWrite off
         Stencil
