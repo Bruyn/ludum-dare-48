@@ -1,11 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sigtrap.Relays;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
+public class AttackStateChangedInfo
+{
+    public GameObject Target;
+    public bool State;
+
+    public AttackStateChangedInfo(GameObject target, bool state)
+    {
+        Target = target;
+        State = state;
+    }
+}
 
 public class PlayerAttack : MonoBehaviour
 {
+    public Relay<AttackStateChangedInfo> OnAttackStateChanged = new Relay<AttackStateChangedInfo>();
+    
     [Header("AttackStats")]
     [SerializeField] private float damageAmount = 2f;
     [SerializeField] private float searchRadius = 2f;
@@ -18,8 +32,6 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking = false;
     private Vector3 jumpPosition;
     private Rigidbody rb;
-
-    // public Animator Animator;
     
     private void Start()
     {
@@ -28,7 +40,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!isAttacking && Input.GetMouseButtonDown(0))
+        if (!isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;
             StartAttack();
@@ -45,7 +57,10 @@ public class PlayerAttack : MonoBehaviour
             Vector3 posToMove = transform.position + direction * jumpSpeed;
             rb.MovePosition(posToMove);
             //Reset if we arrived
-            if (Vector3.Distance(transform.position, jumpPosition) < 0.5f)
+            Debug.DrawLine(transform.position, jumpPosition);
+            float distance = Vector3.Distance(transform.position, jumpPosition);
+            Debug.Log("Distance: " + distance);
+            if (distance < attackDistance)
             {
                 rb.MovePosition(jumpPosition);
                 jumpPosition = Vector3.zero;
@@ -63,7 +78,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         isAttacking = true;
-        // Animator.SetBool("isKicking", isAttacking);
+        OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
         Debug.Log("Attacked target " + attackTarget + "!");
         JumpToTarget();
     }
@@ -79,9 +94,9 @@ public class PlayerAttack : MonoBehaviour
         dirToEnemy.Normalize();
         
         attackTarget.GetComponent<Rigidbody>().AddForce(dirToEnemy * knockbackForce);
-        
-        isAttacking = false;        
-        // Animator.SetBool("isKicking", isAttacking);
+
+        isAttacking = false;
+        OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(null, isAttacking));
     }
 
     #region FindTarget
