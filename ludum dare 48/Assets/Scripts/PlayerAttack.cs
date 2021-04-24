@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("AttackStats")]
+    [SerializeField] private float damageAmount = 2f;
     [SerializeField] private float searchRadius = 2f;
     [SerializeField] private float attackDistance = 2f;
     [SerializeField] private float jumpSpeed = 3f;
@@ -52,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
     private void StartAttack()
     {
         attackTarget = GetNearestAttackObject();
@@ -69,7 +69,7 @@ public class PlayerAttack : MonoBehaviour
     private void FinishAttack()
     {
         //Damage object
-        attackTarget.Damage(Random.Range(1f, 3f));
+        attackTarget.Damage(new Damage(gameObject, damageAmount));
 
         //Knockback object
         var dirToEnemy = attackTarget.transform.position - transform.position;

@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Damage : MonoBehaviour
+public class Damage
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject Damager;
+    public float Amount;
 
-    // Update is called once per frame
-    void Update()
+    public Damage(GameObject damager, float amount)
     {
-        
+        Damager = damager;
+        Amount = amount;
     }
 }
