@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5015259733069798988}
   m_Layer: 0
   m_Name: PlayerKek
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf65464947936de418392aa06faa0029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Movementspeed: 5
+  Movementspeed: 8
   Animator: {fileID: 1509653164704590934}
   screenRayMask:
     serializedVersion: 2

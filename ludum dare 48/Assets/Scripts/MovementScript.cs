@@ -45,6 +45,8 @@ public class MovementScript : MonoBehaviour
         
         direction = lookingDirection;
         Vector3 transformed = transform.InverseTransformVector(movementVector);
+
+        animDir = transformed;
         
         Animator.SetFloat("xAxis", transformed.x);
         Animator.SetFloat("yAxis", transformed.z);
@@ -52,6 +54,7 @@ public class MovementScript : MonoBehaviour
 
     private Vector3 direction;
     private Vector3 movement;
+    private Vector3 animDir;
     
     private void OnDrawGizmos()
     {
@@ -59,5 +62,8 @@ public class MovementScript : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + direction);
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + movement);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + animDir);
+
     }
 }
