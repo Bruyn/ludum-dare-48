@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!isAttacking && Input.GetMouseButtonDown(0))
+        if (!isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;
             isAttacking = true;
