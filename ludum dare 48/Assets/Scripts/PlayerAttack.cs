@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (!isAttacking && Input.GetMouseButtonDown(0))
+        if (!isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;
             StartAttack();
@@ -45,7 +45,10 @@ public class PlayerAttack : MonoBehaviour
             Vector3 posToMove = transform.position + direction * jumpSpeed;
             rb.MovePosition(posToMove);
             //Reset if we arrived
-            if (Vector3.Distance(transform.position, jumpPosition) < 0.5f)
+            Debug.DrawLine(transform.position, jumpPosition);
+            float distance = Vector3.Distance(transform.position, jumpPosition);
+            Debug.Log("Distance: " + distance);
+            if (distance < attackDistance)
             {
                 rb.MovePosition(jumpPosition);
                 jumpPosition = Vector3.zero;
