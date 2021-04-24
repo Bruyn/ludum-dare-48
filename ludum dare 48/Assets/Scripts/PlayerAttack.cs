@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 jumpPosition;
     private Rigidbody rb;
 
-    public Animator Animator;
+    // public Animator Animator;
     
     private void Start()
     {
@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         isAttacking = true;
-        Animator.SetBool("isKicking", isAttacking);
+        // Animator.SetBool("isKicking", isAttacking);
         Debug.Log("Attacked target " + attackTarget + "!");
         JumpToTarget();
     }
@@ -81,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
         attackTarget.GetComponent<Rigidbody>().AddForce(dirToEnemy * knockbackForce);
         
         isAttacking = false;        
-        Animator.SetBool("isKicking", isAttacking);
+        // Animator.SetBool("isKicking", isAttacking);
     }
 
     #region FindTarget
