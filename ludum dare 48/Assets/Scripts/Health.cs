@@ -1,10 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Sigtrap.Relays;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    public Relay<Damage> OnDamage = new Relay<Damage>();
+    public Relay<Damage> OnDeath = new Relay<Damage>();
+    
     [SerializeField] private float maxHealth = 3f;
 
     private float currentHealth = 0f;
@@ -14,15 +15,16 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void Damage(float damage)
+    public void Damage(Damage damage)
     {
-        currentHealth -= damage;
+        currentHealth -= damage.Amount;
+        OnDamage.Dispatch(damage);
         if (currentHealth <= 0)
-            Die();
+            Die(damage);
     }
 
-    private void Die()
+    private void Die(Damage damage)
     {
-        gameObject.SetActive(false);
+        OnDeath.Dispatch(damage);
     }
 }

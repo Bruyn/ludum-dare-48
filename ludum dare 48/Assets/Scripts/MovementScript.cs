@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
@@ -22,24 +18,46 @@ public class MovementScript : MonoBehaviour
     
     void Update()
     {
-        float horAxis = Input.GetAxis("Horizontal");
-        float vertAxis = Input.GetAxis("Vertical");
+        float horAxis = Input.GetAxisRaw("Horizontal");
+        float vertAxis = Input.GetAxisRaw("Vertical");
         
-        Vector3 movementVector = new Vector3(horAxis, 0, vertAxis);
+        Vector3 forward = _camera.transform.forward;
+        Vector3 right = _camera.transform.right;
+        
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+ 
+        Vector3 movementVector = forward * vertAxis + right * horAxis;
         movementVector.Normalize();
-        
         _rigidbody.MovePosition(_rigidbody.transform.position + movementVector * (Movementspeed * Time.deltaTime));
+        movement = movementVector;
         
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         Physics.Raycast(ray, out hit, 100f, screenRayMask.value);
         _mousePosition = hit.point;
-
         Vector3 lookingDirection = (_mousePosition - transform.position).normalized;
+        lookingDirection.y = 0;        
         transform.rotation = Quaternion.LookRotation(lookingDirection);
         
-        Animator.SetFloat("MovementSpeed", movementVector.magnitude);
+        direction = lookingDirection;
+        Vector3 transformed = transform.InverseTransformVector(movementVector);
+        
+        Animator.SetFloat("xAxis", transformed.x);
+        Animator.SetFloat("yAxis", transformed.z);
     }
+
+    private Vector3 direction;
+    private Vector3 movement;
     
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.black;
+        Gizmos.DrawLine(transform.position, transform.position + direction);
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + movement);
+    }
 }
