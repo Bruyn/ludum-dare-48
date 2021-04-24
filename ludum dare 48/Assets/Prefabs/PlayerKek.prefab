@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movementspeed: 15
   Animator: {fileID: 1509653164704590934}
+  _animEventReceiver: {fileID: 1300785162}
   screenRayMask:
     serializedVersion: 2
     m_Bits: 55
@@ -181,6 +182,18 @@ MonoBehaviour:
   attackDistance: 2
   jumpSpeed: 0.5
   knockbackForce: 10
+--- !u!114 &1300785162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285152241048579222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 284178803c089294b91b6912fa2d78b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5015259733968441799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,6 +259,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98f650659962dc041b428670358a8738, type: 3}
+--- !u!1 &5285152241048579222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 98f650659962dc041b428670358a8738, type: 3}
+  m_PrefabInstance: {fileID: 5015259733968441799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4761273864791471660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98f650659962dc041b428670358a8738, type: 3}
