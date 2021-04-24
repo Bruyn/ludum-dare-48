@@ -145,5 +145,5 @@ MonoBehaviour:
   clipSize: 8
   reloadTime: 0.6
   ammoPerReload: 8
-  shootingPoing: {fileID: 0}
+  shootingPoing: {fileID: 6246518677771307593}
   inaccuracy: 5
