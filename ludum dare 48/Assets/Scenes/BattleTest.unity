@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d58a08e8eaea94fb74dc19d0e621ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 2
   searchRadius: 5
   attackDistance: 2
   jumpSpeed: 1
@@ -497,7 +498,7 @@ GameObject:
   - component: {fileID: 844264642}
   - component: {fileID: 844264641}
   - component: {fileID: 844264640}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
