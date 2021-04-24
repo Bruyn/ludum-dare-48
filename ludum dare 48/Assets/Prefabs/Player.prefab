@@ -80,7 +80,7 @@ MonoBehaviour:
   Animator: {fileID: 0}
   screenRayMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 183
 --- !u!1001 &1114914279690677293
 PrefabInstance:
   m_ObjectHideFlags: 0
