@@ -5,8 +5,11 @@ public class SeeThroughWalls : MonoBehaviour
 {
     private List<GameObjectWithAlpha> _gameObjectWithAlphaList = new List<GameObjectWithAlpha>();
 
-    public float sphereCastRadius = 0.5f;
-    public float alpha = 0.2f;
+    public float sphereCastRadius = 0.3f;
+    public float alpha = 0f;
+
+    private RaycastHit[] results = new RaycastHit[10];
+
     void Update()
     {
         foreach (GameObjectWithAlpha gameObjectWithAlpha in _gameObjectWithAlphaList)
@@ -17,11 +20,16 @@ public class SeeThroughWalls : MonoBehaviour
         _gameObjectWithAlphaList.Clear();
 
         Vector3 cameraPosition = Camera.main.transform.position;
-        Vector3 diff = (transform.position - cameraPosition);
-        RaycastHit[] hits = Physics.SphereCastAll(cameraPosition, sphereCastRadius, diff.normalized, diff.magnitude - sphereCastRadius);
-        foreach (RaycastHit hit in hits)
+        Vector3 diff = ((transform.position) - cameraPosition);
+
+        LayerMask mask = LayerMask.GetMask("Wall");
+        var size = Physics.SphereCastNonAlloc(cameraPosition, sphereCastRadius, diff.normalized, results,
+            diff.magnitude - sphereCastRadius, mask);
+        
+        for (int i = 0; i < size; i++)
         {
-            if (hit.collider.gameObject.tag == "Wall")
+            RaycastHit hit = results[i];
+            if (hit.collider.gameObject.CompareTag("Wall"))
             {
                 GameObjectWithAlpha gameObjectWithAlpha = new GameObjectWithAlpha();
                 gameObjectWithAlpha.GameObject = hit.collider.gameObject;
