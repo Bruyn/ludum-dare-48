@@ -62,7 +62,15 @@ public class Gun : MonoBehaviour
 
 		Projectile projectile = ProjectileController.Instance.PickProjectile();
 		projectile.transform.position = shootingPoing.position;
-		projectile.transform.rotation = transform.rotation * rot;
+
+		if (shootingPoing == null)
+		{
+			projectile.transform.rotation = transform.rotation * rot;
+		}
+		else
+		{
+			projectile.transform.rotation = shootingPoing.transform.rotation * rot;
+		}
 		projectile.SetUp(damage);
 	}
 	
