@@ -258,7 +258,7 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.5.11
-  gizmoViewMode: 0
+  gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
 --- !u!195 &212896702
 NavMeshAgent:
@@ -636,7 +636,7 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.5.11
-  gizmoViewMode: 0
+  gizmoViewMode: 2
   showBehaviorDesignerGizmo: 1
 --- !u!1 &2057832030
 GameObject:
