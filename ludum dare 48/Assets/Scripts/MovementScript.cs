@@ -44,12 +44,14 @@ public class MovementScript : MonoBehaviour
         else
         {
             isKickLanded = false;
+            Debug.Log("Not attacking");
         }
     }
 
     void KickLanded(bool state)
     {
         isKickLanded = true;
+        Debug.Log("Landed");
     }
 
     void Update()
