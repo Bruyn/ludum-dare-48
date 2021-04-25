@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime.Tasks.Unity.Math;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
@@ -72,7 +73,8 @@ public class MovementScript : MonoBehaviour
         
         Vector3 movementVector = forward * vertAxis + right * horAxis;
         movementVector.Normalize();
-        _rigidbody.MovePosition(_rigidbody.transform.position + movementVector * (Movementspeed * Time.deltaTime));
+        _rigidbody.velocity = movementVector * Movementspeed;
+        
         movement = movementVector;
         
         Vector3 screenPos = _camera.WorldToScreenPoint(transform.position);
