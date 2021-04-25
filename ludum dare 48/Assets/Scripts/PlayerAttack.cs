@@ -27,6 +27,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float jumpSpeed = 3f;
     [SerializeField] private float knockbackForce = 10f;
 
+    [Header("Debug")]
+    [SerializeField] private bool debugEnabled = false;
+
+    private RigidbodyConstraints savedConstraints;
     private Health attackTarget;
     private int attackCounter = 0;
     private bool isAttacking = false;
@@ -36,54 +40,22 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        savedConstraints = rb.constraints;
     }
 
-    private void Update()
-    {
-        if (!isAttacking && Input.GetMouseButtonDown(1))
-        {
-            attackTarget = null;
-            StartAttack();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (jumpPosition != Vector3.zero)
-        {
-            Vector3 direction = jumpPosition - transform.position;
-            direction.y = 0;
-            direction.Normalize();
-            Vector3 posToMove = transform.position + direction * jumpSpeed;
-            rb.MovePosition(posToMove);
-            //Reset if we arrived
-            Debug.DrawLine(transform.position, jumpPosition);
-            float distance = Vector3.Distance(transform.position, jumpPosition);
-            Debug.Log("Distance: " + distance);
-            if (distance < attackDistance)
-            {
-                rb.MovePosition(jumpPosition);
-                jumpPosition = Vector3.zero;
-                FinishAttack();
-            }
-        }
-    }
-
-    private void StartAttack()
+    private void Enter()
     {
         attackTarget = GetNearestAttackObject();
         if (attackTarget == null)
-        {
             return;
-        }
 
         isAttacking = true;
         OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
-        Debug.Log("Attacked target " + attackTarget + "!");
+        rb.constraints = savedConstraints | RigidbodyConstraints.FreezePositionY;
         JumpToTarget();
     }
 
-    private void FinishAttack()
+    private void Exit()
     {
         //Damage object
         attackTarget.Damage(new Damage(gameObject, damageAmount));
@@ -92,11 +64,58 @@ public class PlayerAttack : MonoBehaviour
         var dirToEnemy = attackTarget.transform.position - transform.position;
         dirToEnemy.y = 0.2f;
         dirToEnemy.Normalize();
-        
         attackTarget.GetComponent<Rigidbody>().AddForce(dirToEnemy * knockbackForce);
 
         isAttacking = false;
+        rb.constraints = savedConstraints;
+
         OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(null, isAttacking));
+    }
+
+    private IEnumerator JumpCoroutine()
+    {
+        var playerPos = transform.position;
+        playerPos.y = 0;
+        float distance = Vector3.Distance(playerPos, jumpPosition);
+        while (distance > 0.25f)
+        {
+            Vector3 direction = jumpPosition - transform.position;
+            direction.y = transform.position.y < 1 ? 1 : 0;
+            direction.Normalize();
+            Vector3 posToMove = transform.position + direction * jumpSpeed;
+            rb.MovePosition(posToMove);
+
+            
+            playerPos = transform.position;
+            playerPos.y = 0;
+            jumpPosition.y = 0;
+
+            distance = Vector3.Distance(playerPos, jumpPosition);
+
+            if (debugEnabled)
+            {
+                Debug.DrawLine(transform.position, jumpPosition);
+                Debug.Log("Distance: " + distance);
+            }
+
+            yield return null;
+        }
+        
+        rb.MovePosition(jumpPosition);
+        jumpPosition = Vector3.zero;
+
+        Exit();
+    }
+    
+    
+
+    private void Update()
+    {
+        if (!isAttacking && Input.GetMouseButtonDown(1))
+        {
+            attackTarget = null;
+            Enter();
+        }
     }
 
     #region FindTarget
@@ -145,6 +164,8 @@ public class PlayerAttack : MonoBehaviour
         dirToPlayer.Normalize();
         Vector3 jumpPos = attackTarget.transform.position + dirToPlayer * attackDistance;
         jumpPosition = jumpPos;
+
+        StartCoroutine(JumpCoroutine());
     }
 
     #endregion

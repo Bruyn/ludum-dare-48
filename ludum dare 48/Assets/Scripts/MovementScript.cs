@@ -5,7 +5,6 @@ public class MovementScript : MonoBehaviour
     public float Movementspeed = 5f;
     public Animator Animator;
     public CharAnimEventReceiver _animEventReceiver;
-    public LayerMask screenRayMask;
 
     private Rigidbody _rigidbody;
     private Vector3 _mousePosition;
@@ -45,12 +44,14 @@ public class MovementScript : MonoBehaviour
         else
         {
             isKickLanded = false;
+            Debug.Log("Not attacking");
         }
     }
 
     void KickLanded(bool state)
     {
         isKickLanded = true;
+        Debug.Log("Landed");
     }
 
     void Update()
@@ -68,28 +69,23 @@ public class MovementScript : MonoBehaviour
         right.y = 0f;
         forward.Normalize();
         right.Normalize();
- 
+        
         Vector3 movementVector = forward * vertAxis + right * horAxis;
         movementVector.Normalize();
         _rigidbody.MovePosition(_rigidbody.transform.position + movementVector * (Movementspeed * Time.deltaTime));
         movement = movementVector;
         
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        Physics.Raycast(ray, out hit, 100f, screenRayMask.value);
-        _mousePosition = hit.point;
-        Vector3 lookingDirection = (_mousePosition - transform.position).normalized;
-        lookingDirection.y = 0;        
-        transform.rotation = Quaternion.LookRotation(lookingDirection);
+        Vector3 screenPos = _camera.WorldToScreenPoint(transform.position);
+        Vector3 screenDir = (Input.mousePosition - screenPos).normalized;
+        Vector3 desiredDirection = forward * screenDir.y + right * screenDir.x;
+        transform.rotation = Quaternion.LookRotation(desiredDirection);
+        direction = desiredDirection;
         
-        direction = lookingDirection;
         Vector3 transformed = transform.InverseTransformVector(movementVector);
-
-        animDir = transformed;
+        animDir = transformed.normalized;
         
-        Animator.SetFloat("xAxis", transformed.x);
-        Animator.SetFloat("yAxis", transformed.z);
+        Animator.SetFloat("xAxis", animDir.x);
+        Animator.SetFloat("yAxis", animDir.z);
     }
 
     private Vector3 direction;

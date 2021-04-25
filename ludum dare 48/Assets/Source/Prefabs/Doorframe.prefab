@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2826777869429816621}
   - component: {fileID: 2819128119736272663}
   - component: {fileID: 2832011936692623395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Doorframe
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7e16db8fe51d4a24f80a18540e6b13b1, type: 2}
+  - {fileID: 2100000, guid: bf55f8c9e1c901d4f8cdfabda293663a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
