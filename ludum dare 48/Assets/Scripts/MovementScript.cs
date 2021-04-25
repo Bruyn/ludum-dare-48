@@ -75,7 +75,7 @@ public class MovementScript : MonoBehaviour
         
         Vector3 screenPos = _camera.WorldToScreenPoint(transform.position);
         Vector3 screenDir = (Input.mousePosition - screenPos).normalized;
-        Vector3 desiredDirection = new Vector3(screenDir.y * -1, 0, screenDir.x);
+        Vector3 desiredDirection = forward * screenDir.y + right * screenDir.x;
         transform.rotation = Quaternion.LookRotation(desiredDirection);
         direction = desiredDirection;
         
