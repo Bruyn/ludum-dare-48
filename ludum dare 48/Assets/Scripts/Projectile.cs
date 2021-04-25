@@ -10,6 +10,13 @@ public class Projectile : PooledBehavior
     private Vector3 startPos = Vector3.zero;
     private float maxTravelDistance = 20f;
 
+    private TrailRenderer _trail;
+
+    private void Awake()
+    {
+        _trail = GetComponent<TrailRenderer>();
+    }
+
     public void SetUp(Damage damageToSet)
     {
         damage = damageToSet;
@@ -18,8 +25,8 @@ public class Projectile : PooledBehavior
 
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
         CheckCollision();
+        transform.position += transform.forward * speed * Time.deltaTime;
         if (Vector3.Distance(transform.position, startPos) >= maxTravelDistance)
             Destroy();
     }
@@ -52,6 +59,12 @@ public class Projectile : PooledBehavior
     {
         health.Damage(damage);
         Destroy();
+    }
+
+    public override void ReturnToPool()
+    {
+        base.ReturnToPool();
+        _trail.Clear();
     }
 
     void Destroy()
