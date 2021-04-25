@@ -3028,6 +3028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23417038463097556, guid: 33c0c06bf5774ba4d8b693193812aa5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 261f936aef1a6274fbceaf0ec1f5dd83, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33c0c06bf5774ba4d8b693193812aa5b, type: 3}
 --- !u!1001 &130425461
@@ -6997,7 +7001,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_Name
-      value: Playground_Floor (119)
+      value: roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8679450164262679864, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_RootOrder
@@ -17255,7 +17263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_Name
-      value: Playground_Floor (182)
+      value: roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8679450164262679864, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_RootOrder
@@ -21509,7 +21521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_Name
-      value: Playground_Floor (120)
+      value: roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8679450164262679864, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_RootOrder
@@ -23091,6 +23107,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1810745559406569601, guid: 66ae281403142724b8e49cc77ce7a766, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 261f936aef1a6274fbceaf0ec1f5dd83, type: 2}
     - target: {fileID: 1810745559406569603, guid: 66ae281403142724b8e49cc77ce7a766, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -34077,7 +34097,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_Name
-      value: Playground_Floor (212)
+      value: roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8679450164262679864, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_RootOrder
@@ -45215,6 +45239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1810745559406569601, guid: 66ae281403142724b8e49cc77ce7a766, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 261f936aef1a6274fbceaf0ec1f5dd83, type: 2}
     - target: {fileID: 1810745559406569603, guid: 66ae281403142724b8e49cc77ce7a766, type: 3}
       propertyPath: m_RootOrder
       value: 39
@@ -48188,7 +48216,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_Name
-      value: Playground_Floor (213)
+      value: roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8102393155631537664, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8679450164262679864, guid: e97039c2cdced3549b8036cf8a1df95f, type: 3}
       propertyPath: m_RootOrder
