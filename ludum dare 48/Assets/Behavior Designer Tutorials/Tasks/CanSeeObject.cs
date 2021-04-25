@@ -15,6 +15,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         [Tooltip("The object that is within sight")]
         public SharedGameObject returnedObject;
 
+        
+        public override void OnStart()
+        {
+            targetObject.Value = GameObject.FindGameObjectWithTag("Player");
+        }
+        
         /// <summary>
         /// Returns success if an object was found otherwise failure
         /// </summary>

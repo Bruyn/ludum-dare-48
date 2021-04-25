@@ -6,14 +6,11 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
     [TaskIcon("Assets/Behavior Designer Tutorials/Tasks/Editor/{SkinColor}SeekIcon.png")]
     public class Seek : Action
     {
-        [Tooltip("The speed of the agent")]
-        public SharedFloat speed = 10;
-        [Tooltip("The angular speed of the agent")]
-        public SharedFloat angularSpeed = 120;
-        [Tooltip("The agent has arrived when the destination is less than the specified amount. This distance should be greater than or equal to the NavMeshAgent StoppingDistance.")]
-        public SharedFloat arriveDistance = 0.2f;
+        public SharedFloat arriveDistance2 = 5f;
+
         [Tooltip("The GameObject that the agent is seeking")]
         public SharedGameObject target;
+
         [Tooltip("If target is null then use the target position")]
         public SharedVector3 targetPosition;
 
@@ -33,14 +30,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         /// </summary>
         public override void OnStart()
         {
-            navMeshAgent.speed = speed.Value;
-            navMeshAgent.angularSpeed = angularSpeed.Value;
-#if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5
-            navMeshAgent.Resume();
-#else
             navMeshAgent.isStopped = false;
-#endif
-
             SetDestination(Target());
         }
 
@@ -48,7 +38,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         // Return running if the agent hasn't reached the destination yet
         public override TaskStatus OnUpdate()
         {
-            if (HasArrived()) {
+            if (HasArrived())
+            {
                 return TaskStatus.Success;
             }
 
@@ -57,12 +48,25 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
             return TaskStatus.Running;
         }
 
+        private bool LineOfSight(GameObject targetObject)
+        {
+            RaycastHit hit;
+            if (Physics.Linecast(transform.position, targetObject.transform.position, out hit)) {
+                if (hit.transform.IsChildOf(targetObject.transform) || targetObject.transform.IsChildOf(hit.transform)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
         // Return targetPosition if target is null
         private Vector3 Target()
         {
-            if (target.Value != null) {
+            if (target.Value != null)
+            {
                 return target.Value.transform.position;
             }
+
             return targetPosition.Value;
         }
 
@@ -73,11 +77,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         /// <returns>True if the destination is valid.</returns>
         private bool SetDestination(Vector3 destination)
         {
-#if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5
-            navMeshAgent.Resume();
-#else
             navMeshAgent.isStopped = false;
-#endif
             return navMeshAgent.SetDestination(destination);
         }
 
@@ -89,13 +89,16 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         {
             // The path hasn't been computed yet if the path is pending.
             float remainingDistance;
-            if (navMeshAgent.pathPending) {
+            if (navMeshAgent.pathPending)
+            {
                 remainingDistance = float.PositiveInfinity;
-            } else {
+            }
+            else
+            {
                 remainingDistance = navMeshAgent.remainingDistance;
             }
 
-            return remainingDistance <= arriveDistance.Value;
+            return remainingDistance <= arriveDistance2.Value && LineOfSight(target.Value);
         }
 
         /// <summary>
@@ -103,12 +106,9 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         /// </summary>
         private void Stop()
         {
-            if (navMeshAgent.hasPath) {
-#if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5
-                navMeshAgent.Stop();
-#else
+            if (navMeshAgent.hasPath)
+            {
                 navMeshAgent.isStopped = true;
-#endif
             }
         }
 

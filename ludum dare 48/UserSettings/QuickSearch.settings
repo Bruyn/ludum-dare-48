@@ -16,7 +16,7 @@ filters = {
 	settings = true
 }
 scopes = {
-	"last_search.AB59B443" = "wall"
+	"last_search.AB59B443" = "ai"
 }
 providers = {
 	asset = {
