@@ -54,7 +54,7 @@ public class MovementScript : MonoBehaviour
         Debug.Log("Landed");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (isKicking || !isKickLanded)
             return;
