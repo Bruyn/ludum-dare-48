@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 446253215}
-  m_IndirectSpecularColor: {r: 0.044339806, g: 0.039306067, b: 0.047032475, a: 1}
+  m_IndirectSpecularColor: {r: 0.04238277, g: 0.037670013, b: 0.044812173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1279,7 +1279,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290496493493964, guid: 5396a093575259c498a56449c2d6a0cb, type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4290496493493964, guid: 5396a093575259c498a56449c2d6a0cb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6715,10 +6715,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5015259733069798988, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: Movementspeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5015259733069798989, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
       propertyPath: m_Name
       value: PlayerKek
@@ -9819,7 +9815,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &446576329
 PrefabInstance:
@@ -11582,7 +11578,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5271002626393591289, guid: 628a47f08a1f8584f8f873080b8aa493, type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5271002626393591289, guid: 628a47f08a1f8584f8f873080b8aa493, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14309,7 +14305,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5271002626393591289, guid: 628a47f08a1f8584f8f873080b8aa493, type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5271002626393591289, guid: 628a47f08a1f8584f8f873080b8aa493, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16040,7 +16036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8942866461428550410, guid: ced9afc8de1dafa4c90c40a091b12499, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8942866461428550410, guid: ced9afc8de1dafa4c90c40a091b12499, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17105,7 +17101,7 @@ Transform:
   - {fileID: 551137712}
   - {fileID: 852215799}
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &756971919
 PrefabInstance:
@@ -26676,7 +26672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4737960966618508, guid: 576699dbc35cb2a4ebe1e782f12d8a9b, type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4737960966618508, guid: 576699dbc35cb2a4ebe1e782f12d8a9b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -46047,7 +46043,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4515485009214707 stripped
 Transform:
