@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
 	[SerializeField] private int ammoPerReload = 5;
 	[SerializeField] private Transform shootingPoing = null;
 	[SerializeField] protected float inaccuracy = 5f;
+	[SerializeField] private ParticleSystem muzzle;
 
 	private Damage damage;
 	private float currentCD = 0;
@@ -52,6 +53,7 @@ public class Gun : MonoBehaviour
 		currentClipSize--;
 
 		//TODO shoot sound and HUD
+		muzzle.Play();
 		return true;
 	}
 
