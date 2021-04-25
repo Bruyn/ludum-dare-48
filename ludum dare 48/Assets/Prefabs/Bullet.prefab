@@ -94,4 +94,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf309f8ef79c40efa2317c5a903a00be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallSfx: {fileID: 5995213870851946362, guid: 24358a19645a57944972677a1c03c04c, type: 3}
   speed: 10

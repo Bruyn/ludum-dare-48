@@ -2,9 +2,9 @@
 
 public class Projectile : PooledBehavior
 {
-    
-    [SerializeField]
-    private float speed = 3f;
+    [SerializeField] private ParticleSystem wallSfx;
+    [SerializeField] private float speed = 3f;
+
     private Damage damage;
     private Vector3 startPos = Vector3.zero;
     private float maxTravelDistance = 20f;
@@ -33,7 +33,18 @@ public class Projectile : PooledBehavior
             Health health = hit.collider.gameObject.GetComponent<Health>();
             if (health != null)
                 ProcessHit(health);
+            else
+            {
+                SpawnWallEffect(hit.point);
+                Destroy();
+            }
         }
+    }
+
+    private void SpawnWallEffect(Vector3 position)
+    {
+        ParticleSystem sfxObject = Instantiate(wallSfx, position, Quaternion.identity);
+        sfxObject.transform.LookAt(transform.position);
     }
 
     void ProcessHit(Health health)
