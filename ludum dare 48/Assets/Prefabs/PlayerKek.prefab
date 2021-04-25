@@ -5228,6 +5228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d58a08e8eaea94fb74dc19d0e621ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gun: {fileID: 199993593}
   damageAmount: 2
   searchRadius: 2
   attackDistance: 1.1

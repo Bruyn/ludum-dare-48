@@ -20,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
 {
     public Relay<AttackStateChangedInfo> OnAttackStateChanged = new Relay<AttackStateChangedInfo>();
     
+    public Gun _gun;
+    
     [Header("AttackStats")]
     [SerializeField] private float damageAmount = 2f;
     [SerializeField] private float searchRadius = 2f;
@@ -115,6 +117,11 @@ public class PlayerAttack : MonoBehaviour
         {
             attackTarget = null;
             Enter();
+        }
+        
+        if (Input.GetMouseButton(0))
+        {
+            _gun.Shoot();
         }
     }
 
