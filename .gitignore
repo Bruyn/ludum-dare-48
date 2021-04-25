@@ -123,3 +123,6 @@ crashlytics-build.properties
 *.xml
 Ludum Dare 47/Packages/packages-lock.json
 Ludum Dare 47/Packages/manifest.json
+ludum dare 48/Assets/Ludiq/Ludiq.PeekCore/Runtime/Dependencies/OdinSerializer/*
+ludum dare 48/Assets/Ludiq/Ludiq.PeekCore/Runtime/Dependencies/OdinSerializer/*
+ludum dare 48/Assets/Ludiq/Ludiq.PeekCore/DotNetDocumentation/*
