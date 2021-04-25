@@ -72,8 +72,18 @@ public class MovementScript : MonoBehaviour
         right.Normalize();
         
         Vector3 movementVector = forward * vertAxis + right * horAxis;
+
+        Ray ray = new Ray(transform.position + Vector3.up, Vector3.down);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 5))
+        {
+            movementVector = Vector3.ProjectOnPlane(movementVector, hit.normal);
+        }
         movementVector.Normalize();
-        _rigidbody.velocity = movementVector * Movementspeed;
+        
+        movementVector *= Movementspeed;
+        movementVector.y = _rigidbody.velocity.y;
+        _rigidbody.velocity = movementVector;
         
         movement = movementVector;
         
