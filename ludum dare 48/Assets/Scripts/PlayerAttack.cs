@@ -35,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private GameObject _rightHand;
     [SerializeField] private bool meleeAtack = true;
+    [SerializeField] private bool isKickEnabled = false;
     [SerializeField] private float meleeAtackRadius = 0.5f;
     [SerializeField] private float meleeAtackDamageAmount = 10f;
 
@@ -51,6 +52,18 @@ public class PlayerAttack : MonoBehaviour
 
     public bool IsKicking { get; private set; } = false;
     public bool IsKickLanded { get; private set; } = true;
+
+    public void EnableKick()
+    {
+        isKickEnabled = true;
+    }
+
+    public void EnableGun()
+    {
+        meleeAtack = false;
+        _rig.weight = 1;
+        _gunGameObject.SetActive(true);
+    }
 
     private void Start()
     {
@@ -116,6 +129,7 @@ public class PlayerAttack : MonoBehaviour
     {
         _animator.SetBool("isKicking", state.State);
         IsKicking = state.State;
+        HudController.Instance.UpdateKickStatus(!state.State);
 
         if (IsKicking)
         {
@@ -174,7 +188,7 @@ public class PlayerAttack : MonoBehaviour
             return;
         }
 
-        if (!isAttacking && Input.GetMouseButtonDown(1))
+        if (isKickEnabled && !isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;
             Enter();
@@ -220,9 +234,13 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (var nearbyObject in nearbyObjects)
         {
-            attackTarget = nearbyObject.GetComponent<Health>();
-            if (attackTarget != null)
-                return attackTarget;
+            var newAttackTarget = nearbyObject.GetComponent<Health>();
+            if (newAttackTarget == null)
+                continue;
+            if (newAttackTarget.IsDead() || newAttackTarget.gameObject == gameObject)
+                continue;
+            
+            return newAttackTarget;
         }
 
         return null;

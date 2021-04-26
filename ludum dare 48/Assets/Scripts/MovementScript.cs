@@ -27,7 +27,7 @@ public class MovementScript : MonoBehaviour
         {
             return;
         }
-        
+
         if (_playerAttack.IsKicking || !_playerAttack.IsKickLanded)
             return;
 
@@ -85,4 +85,10 @@ public class MovementScript : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + animDir);
     }
+
+    public Vector3 GetMovementVector()
+    {
+        return movement;
+    }
+
 }
