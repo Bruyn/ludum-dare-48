@@ -10982,7 +10982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movementspeed: 5
   Animator: {fileID: 2025197731594079655}
-  isGameplayStarted: 0
+  isGameplayStarted: 1
 --- !u!114 &678365944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11000,13 +11000,14 @@ MonoBehaviour:
   searchRadius: 2
   attackDistance: 1.1
   jumpSpeed: 25
+  maxKickDistance: 10
   timeScale: 0.5
   _animator: {fileID: 2025197731594079655}
   _gunGameObject: {fileID: 8432900762421318247}
   _rig: {fileID: 12519231}
   _rightHand: {fileID: 3871873258368434574}
   meleeAtack: 1
-  isKickEnabled: 0
+  isKickEnabled: 1
   meleeAtackRadius: 0.5
   meleeAtackDamageAmount: 10
   debugEnabled: 0

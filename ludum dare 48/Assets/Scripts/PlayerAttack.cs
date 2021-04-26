@@ -27,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float searchRadius = 2f;
     [SerializeField] private float attackDistance = 2f;
     [SerializeField] private float jumpSpeed = 3f;
+    [SerializeField] private float maxKickDistance = 5f;
     [SerializeField] private float timeScale = 0.5f;
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _gunGameObject;
@@ -232,6 +233,8 @@ public class PlayerAttack : MonoBehaviour
         if (nearbyObjects.Count <= 0)
             return null;
 
+        Vector3 playerPos = transform.position;
+        
         foreach (var nearbyObject in nearbyObjects)
         {
             var newAttackTarget = nearbyObject.GetComponent<Health>();
@@ -239,6 +242,29 @@ public class PlayerAttack : MonoBehaviour
                 continue;
             if (newAttackTarget.IsDead() || newAttackTarget.gameObject == gameObject)
                 continue;
+
+            Vector3 targetPos = newAttackTarget.transform.position;
+            float distance = Vector3.Distance(playerPos, targetPos);
+            if (distance > maxKickDistance)
+                continue;
+            
+            Vector3 direction = (targetPos - playerPos).normalized;
+            Ray ray = new Ray(playerPos, direction);
+            RaycastHit []hits = Physics.RaycastAll(ray, distance);
+            bool mustSkip = false;
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject != gameObject && hit.collider.gameObject != newAttackTarget.gameObject)
+                {
+                    mustSkip = true;
+                    break;
+                }
+            }
+
+            if (mustSkip)
+            {
+                continue;
+            }
             
             return newAttackTarget;
         }
