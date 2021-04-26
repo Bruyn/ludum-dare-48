@@ -5788,9 +5788,11 @@ MonoBehaviour:
   timeScale: 0.5
   _animator: {fileID: 2025197731594079655}
   _gunGameObject: {fileID: 8432900762421318247}
-  _rightHand: {fileID: 3871873258368434574}
   _rig: {fileID: 12519231}
+  _rightHand: {fileID: 3871873258368434574}
   meleeAtack: 1
+  meleeAtackRadius: 0.5
+  meleeAtackDamageAmount: 10
   debugEnabled: 0
 --- !u!114 &835956282384829748
 MonoBehaviour:
@@ -6262,13 +6264,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
-  shootCD: 0.15
-  damageAmount: 1
-  clipSize: 8
+  shootCD: 0.05
+  damageAmount: 2
+  clipSize: 30
   reloadTime: 0.6
-  ammoPerReload: 8
+  ammoPerReload: 30
   shootingPoing: {fileID: 328782892}
-  inaccuracy: 5
+  inaccuracy: 3
   muzzle: {fileID: 1479138893}
 --- !u!54 &6625625185118434411
 Rigidbody:
