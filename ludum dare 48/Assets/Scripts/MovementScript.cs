@@ -10,6 +10,7 @@ public class MovementScript : MonoBehaviour
     private Rigidbody _rigidbody;
     private Vector3 _mousePosition;
     private Camera _camera;
+    private Health health;
 
     private PlayerAttack _playerAttack;
 
@@ -20,6 +21,7 @@ public class MovementScript : MonoBehaviour
     {
         _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody>();
+        health = GetComponent<Health>();
         
         _playerAttack = GetComponent<PlayerAttack>();
         _playerAttack.OnAttackStateChanged.AddListener(AttackStateChanged);
@@ -57,6 +59,9 @@ public class MovementScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (health.IsDead())
+            return;
+
         if (isKicking || !isKickLanded)
             return;
         

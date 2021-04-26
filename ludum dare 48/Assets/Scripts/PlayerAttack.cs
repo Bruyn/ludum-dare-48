@@ -31,7 +31,8 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = false;
-    
+
+    private Health health;
     private Health attackTarget;
     private int attackCounter = 0;
     private bool isAttacking = false;
@@ -41,6 +42,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        health = GetComponent<Health>();
     }
 
     private void Enter()
@@ -106,6 +108,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (health.IsDead())
+            return;
+
         if (!isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;
