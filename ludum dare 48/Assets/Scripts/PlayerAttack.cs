@@ -44,6 +44,8 @@ public class PlayerAttack : MonoBehaviour
     private Vector3 jumpPosition;
     private Rigidbody rb;
 
+    private Health _health;
+    
     public bool IsKicking { get; private set; } = false;
     public bool IsKickLanded { get; private set; } = true;
 
@@ -52,6 +54,7 @@ public class PlayerAttack : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         _animEventReceiver.KickLanded.AddListener(KickLanded);
         _gun = _gunGameObject.GetComponent<Gun>();
+        _health = GetComponent<Health>();
         
         if (meleeAtack)
         {
@@ -149,6 +152,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (_health.IsDead())
+        {
+            return;
+        }
+        
         if (!isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;

@@ -10,6 +10,7 @@ public class MovementScript : MonoBehaviour
     private Vector3 _mousePosition;
     private Camera _camera;
 
+    private Health _health;
     private PlayerAttack _playerAttack;
 
     void Start()
@@ -17,10 +18,16 @@ public class MovementScript : MonoBehaviour
         _camera = Camera.main;
         _rigidbody = GetComponent<Rigidbody>();
         _playerAttack = GetComponent<PlayerAttack>();
+        _health = GetComponent<Health>();
     }
 
     void FixedUpdate()
     {
+        if (_health.IsDead())
+        {
+            return;
+        }
+        
         if (_playerAttack.IsKicking || !_playerAttack.IsKickLanded)
             return;
 
