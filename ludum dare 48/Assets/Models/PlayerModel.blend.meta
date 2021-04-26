@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -623603649343465320
     second: Scene
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: skin
+    second: {fileID: 2100000, guid: 8961433a6119a994f85ba501ee2e3d43, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -18,7 +23,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Avatar creation failed:\n\tTransform 'hips' for human bone
+      'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -542,7 +548,7 @@ ModelImporter:
     - name: forearm.L
       parentName: upper_arm.L
       position: {x: 0.000000095926225, y: 0.30446735, z: 0.000000011175871}
-      rotation: {x: 0.02661871, y: -0.03392118, z: -0.0222876, w: 0.9988213}
+      rotation: {x: 0.026618712, y: -0.03392118, z: -0.022287602, w: 0.9988213}
       scale: {x: 1.0000008, y: 1.0000007, z: 1.0000004}
     - name: hand.L
       parentName: forearm.L
@@ -612,7 +618,7 @@ ModelImporter:
     - name: f_middle.03.L
       parentName: f_middle.02.L
       position: {x: -0.000000022351742, y: 0.039301094, z: -0.000000029802322}
-      rotation: {x: -0.034746375, y: 0.037101146, z: 0.017206505, w: 0.9985591}
+      rotation: {x: -0.03474637, y: 0.037101146, z: 0.017206503, w: 0.9985591}
       scale: {x: 1.0000006, y: 1.000001, z: 1.0000005}
     - name: f_middle.03.L_end
       parentName: f_middle.03.L
@@ -662,7 +668,7 @@ ModelImporter:
     - name: f_pinky.03.L
       parentName: f_pinky.02.L
       position: {x: -0.0000000055879354, y: 0.027327549, z: -0.000000024214387}
-      rotation: {x: -0.03855814, y: 0.018689418, z: -0.012418722, w: 0.99900436}
+      rotation: {x: -0.038558144, y: 0.018689418, z: -0.012418723, w: 0.99900436}
       scale: {x: 0.99999994, y: 1.0000001, z: 0.9999997}
     - name: f_pinky.03.L_end
       parentName: f_pinky.03.L
@@ -702,7 +708,7 @@ ModelImporter:
     - name: f_index.02.R
       parentName: f_index.01.R
       position: {x: 0.000000044703484, y: 0.038787104, z: 0.000000092666596}
-      rotation: {x: 0.031234134, y: -0.009632505, z: 0.00046156827, w: 0.99946564}
+      rotation: {x: 0.03123413, y: -0.009632505, z: 0.0004615682, w: 0.99946564}
       scale: {x: 1.0000006, y: 1.0000013, z: 1.0000012}
     - name: f_index.03.R
       parentName: f_index.02.R
@@ -717,7 +723,7 @@ ModelImporter:
     - name: thumb.01.R
       parentName: palm.01.R
       position: {x: -0.022640623, y: 0.005110901, z: 0.0053846026}
-      rotation: {x: -0.21649875, y: 0.55428076, z: 0.2573933, w: 0.76134735}
+      rotation: {x: -0.21649876, y: 0.55428076, z: 0.25739333, w: 0.76134735}
       scale: {x: 1.0000004, y: 1.0000007, z: 1.0000005}
     - name: thumb.02.R
       parentName: thumb.01.R
@@ -860,7 +866,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: skin
-      parentName: basemesh_male_rig
+      parentName: PlayerModel(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 1, y: 1, z: 1}

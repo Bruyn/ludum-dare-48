@@ -7720,14 +7720,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 835956282384829748, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 835956282384829748, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: sphereCastRadius
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 5015259733069798985, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
       propertyPath: m_RootOrder
       value: 36
