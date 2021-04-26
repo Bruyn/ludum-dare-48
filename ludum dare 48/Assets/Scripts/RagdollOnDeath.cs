@@ -18,25 +18,25 @@ public class RagdollOnDeath : MonoBehaviour
         health = GetComponent<Health>();
         health.OnDeath.AddOnce(EnableRagdoll);
 
+        allColliders.AddRange(GetComponentsInChildren<Collider>());
+        foreach (var collider in allColliders)
+        {
+            collider.enabled = false;
+        }
+        
         if (mainCollider != null)
         {
-            allColliders.AddRange(GetComponentsInChildren<Collider>());
-            foreach (var collider in allColliders)
-            {
-                collider.enabled = false;
-            }
-
             mainCollider.enabled = true;
         }
 
+        allRigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
+        foreach (var rigidbody in allRigidbodies)
+        {
+            rigidbody.isKinematic = true;
+        }
+        
         if (mainRigidbody != null)
         {
-            allRigidbodies.AddRange(GetComponentsInChildren<Rigidbody>());
-            foreach (var rigidbody in allRigidbodies)
-            {
-                rigidbody.isKinematic = true;
-            }
-
             mainRigidbody.isKinematic = false;
         }
     }
@@ -54,16 +54,29 @@ public class RagdollOnDeath : MonoBehaviour
             {
                 collider.enabled = true;
             }
-        }
 
+            mainCollider.enabled = false;
+        }
+        
+        Vector3 velocity = (transform.position - deathDamage.Damager.transform.position);
+        velocity.Normalize();
+        velocity *= 7f;
+        
+        foreach (var rigidbody in allRigidbodies)
+        {
+            rigidbody.isKinematic = false;
+            rigidbody.velocity = velocity;
+        }
+        
         if (mainRigidbody != null)
         {
-            foreach (var rigidbody in allRigidbodies)
-            {
-                rigidbody.isKinematic = false;
-            }
-
             mainRigidbody.isKinematic = true;
         }
+    }
+
+    public Vector3 Random(float min, float max)
+    {
+        return new Vector3(UnityEngine.Random.Range(min, max), UnityEngine.Random.Range(min, max),
+            UnityEngine.Random.Range(min, max));
     }
 }
