@@ -8,6 +8,7 @@ public class CharAnimEventReceiver : MonoBehaviour
 
     public Relay<bool> KickLanded = new Relay<bool>();
     public Relay<bool> OnStep = new Relay<bool>();
+    public Relay<bool> OnPunchFinished = new Relay<bool>();
 
     void OnKickLanded()
     {
@@ -17,6 +18,11 @@ public class CharAnimEventReceiver : MonoBehaviour
     void Step()
     {
         OnStep.Dispatch(true);
+    }
+
+    void PunchFinished()
+    {
+        OnPunchFinished.Dispatch(true);
     }
 
 }
