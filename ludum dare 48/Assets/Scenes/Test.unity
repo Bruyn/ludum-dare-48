@@ -396,6 +396,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerKek
       objectReference: {fileID: 0}
+    - target: {fileID: 5015259733069798990, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5015259733069798990, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
 --- !u!1 &1370724965 stripped
@@ -553,6 +561,10 @@ PrefabInstance:
     - target: {fileID: 106937546645518379, guid: d98426ae709844e4cb5a61415001e60b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 106937546645518380, guid: d98426ae709844e4cb5a61415001e60b, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 106937546645518383, guid: d98426ae709844e4cb5a61415001e60b, type: 3}
       propertyPath: m_Name

@@ -75,7 +75,7 @@ public class Gun : MonoBehaviour
 			return;
 
 		//TODO start reload sound
-		Debug.Log("Starting reload");
+		//Debug.Log("Starting reload");
 		StartCoroutine(ReloadCoroutine());
 	}
 
