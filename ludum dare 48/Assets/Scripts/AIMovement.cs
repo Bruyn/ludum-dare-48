@@ -8,15 +8,23 @@ public class AIMovement : MonoBehaviour
 
     private NavMeshAgent _navMeshAgent;
 
+    private Health _health;
+    
     // Start is called before the first frame update
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_health.IsDead())
+        {
+            return;
+        }
+        
         SharedGameObject enemy = (SharedGameObject) GetComponent<BehaviorTree>().GetVariable("Enemy");
         if (enemy.Value == null)
         {
