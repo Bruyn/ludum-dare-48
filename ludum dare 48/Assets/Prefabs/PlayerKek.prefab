@@ -6683,7 +6683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cbed78c93e44a28dde9567a7262394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  owner: {fileID: 0}
+  owner: {fileID: 5015259733069798989}
   shootCD: 0.05
   damageAmount: 2
   clipSize: 30
