@@ -51,14 +51,18 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         private bool LineOfSight(GameObject targetObject)
         {
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, targetObject.transform.position, out hit)) {
-                if (hit.transform.IsChildOf(targetObject.transform) || targetObject.transform.IsChildOf(hit.transform)) {
+            if (Physics.Linecast(transform.position, targetObject.transform.position, out hit,
+                LayerMask.GetMask("Wall", "Player")))
+            {
+                if (hit.transform.IsChildOf(targetObject.transform) || targetObject.transform.IsChildOf(hit.transform))
+                {
                     return true;
                 }
             }
+
             return false;
         }
-        
+
         // Return targetPosition if target is null
         private Vector3 Target()
         {
@@ -89,16 +93,17 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         {
             // The path hasn't been computed yet if the path is pending.
             float remainingDistance;
-            if (navMeshAgent.pathPending)
-            {
-                remainingDistance = float.PositiveInfinity;
-            }
-            else
+            if (navMeshAgent.hasPath)
             {
                 remainingDistance = navMeshAgent.remainingDistance;
             }
+            else
+            {
+                remainingDistance = float.PositiveInfinity;
+            }
 
-            return remainingDistance <= arriveDistance2.Value && LineOfSight(target.Value);
+            return (remainingDistance <= arriveDistance2.Value || (transform.position - Target()).sqrMagnitude <=
+                (arriveDistance2.Value * arriveDistance2.Value) && (target.Value == null || LineOfSight(target.Value)));
         }
 
         /// <summary>

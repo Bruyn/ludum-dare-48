@@ -6,8 +6,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
     [TaskIcon("Assets/Behavior Designer Tutorials/Tasks/Editor/{SkinColor}CanSeeObjectIcon.png")]
     public class CanSeeObject : Conditional
     {
-        [Tooltip("The object that we are searching for")]
-        public SharedGameObject targetObject;
+        private GameObject _targetObject;
+        
         [Tooltip("The field of view angle of the agent (in degrees)")]
         public SharedFloat fieldOfViewAngle = 90;
         [Tooltip("The distance that the agent can see")]
@@ -18,7 +18,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         
         public override void OnStart()
         {
-            targetObject.Value = GameObject.FindGameObjectWithTag("Player");
+            _targetObject = GameObject.FindGameObjectWithTag("Player");
         }
         
         /// <summary>
@@ -27,7 +27,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         /// <returns></returns>
         public override TaskStatus OnUpdate()
         {
-            returnedObject.Value = WithinSight(targetObject.Value, fieldOfViewAngle.Value, viewDistance.Value);
+            returnedObject.Value = WithinSight(_targetObject, fieldOfViewAngle.Value, viewDistance.Value);
             if (returnedObject.Value != null) {
                 // Return success if an object was found
                 return TaskStatus.Success;
@@ -63,7 +63,8 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         private bool LineOfSight(GameObject targetObject)
         {
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, targetObject.transform.position, out hit)) {
+            
+            if (Physics.Linecast(transform.position, targetObject.transform.position, out hit, LayerMask.GetMask("Wall", "Player"))) {
                 if (hit.transform.IsChildOf(targetObject.transform) || targetObject.transform.IsChildOf(hit.transform)) {
                     return true;
                 }
