@@ -200,6 +200,17 @@ MonoBehaviour:
   shotClips:
   - {fileID: 8300000, guid: 8b4929706f6d34449aa83ee5d7b2ce81, type: 3}
   shotVolume: 0.15
+  karateClips:
+  - {fileID: 8300000, guid: 4acf85192e952144a94eba3bd847e3f9, type: 3}
+  karateVolume: 0.15
+  hitClips:
+  - {fileID: 8300000, guid: 5602371e3f279fa47a3f5b5381ba35c1, type: 3}
+  - {fileID: 8300000, guid: 71ce18f184905394cb69a7fc1cdae0ef, type: 3}
+  hitVolume: 0.15
+  wooshClips:
+  - {fileID: 8300000, guid: 92c1adbbf15c82a4eb15fa5fd2f19312, type: 3}
+  - {fileID: 8300000, guid: ff63cf9e6a03b304e81c14e7c2c6e688, type: 3}
+  wooshVolume: 0.15
 --- !u!1 &1203913590
 GameObject:
   m_ObjectHideFlags: 0
@@ -10303,7 +10314,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014822531405477892}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 

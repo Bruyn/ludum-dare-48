@@ -26,8 +26,10 @@ public class Gun : MonoBehaviour
 		currentClipSize = clipSize;
 		damage = new Damage(owner, damageAmount);
 		if (owner != null && owner.GetComponent<PlayerAttack>() != null)
+		{
 			isOwnedByPlayer = true;
-		HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
+			HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
+		}
 	}
 	
 	// Method handles shooting cooldown, reloading and ammo wasting.
@@ -48,7 +50,11 @@ public class Gun : MonoBehaviour
 		currentCD = Time.time + shootCD;
 		currentClipSize--;
 
-		HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
+		if (isOwnedByPlayer)
+		{
+			HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
+		}
+
 		SoundManager.Instance.PlayShotSound();
 		muzzle.Play();
 		return true;

@@ -9,6 +9,15 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private List<AudioClip> shotClips = new List<AudioClip>();
     [SerializeField] private float shotVolume = .15f;
+    
+    [SerializeField] private List<AudioClip> karateClips = new List<AudioClip>();
+    [SerializeField] private float karateVolume = .15f;
+    
+    [SerializeField] private List<AudioClip> hitClips = new List<AudioClip>();
+    [SerializeField] private float hitVolume = .15f;
+    
+    [SerializeField] private List<AudioClip> wooshClips = new List<AudioClip>();
+    [SerializeField] private float wooshVolume = .15f;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
 
@@ -27,6 +36,24 @@ public class SoundManager : MonoBehaviour
     {
         int index = Random.Range(0, shotClips.Count);
         PlaySound(shotClips[index], shotVolume);
+    }
+    
+    public void PlayHitSound()
+    {
+        int index = Random.Range(0, hitClips.Count);
+        PlaySound(hitClips[index], hitVolume);
+    }
+    
+    public void PlayKarateSound()
+    {
+        int index = Random.Range(0, karateClips.Count);
+        PlaySound(karateClips[index], karateVolume);
+    }
+    
+    public void PlayWooshSound()
+    {
+        int index = Random.Range(0, wooshClips.Count);
+        PlaySound(wooshClips[index], wooshVolume);
     }
     
     public void PlaySound(AudioClip clipToPlay, float volume)
