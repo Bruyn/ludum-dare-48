@@ -697,7 +697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAnimator: {fileID: 643988583844545626}
   gunToHide: {fileID: 0}
-  mainCollider: {fileID: 0}
+  mainCollider: {fileID: 1649474281916177826}
   mainRigidbody: {fileID: 0}
 --- !u!114 &1649474281916177830
 MonoBehaviour:
