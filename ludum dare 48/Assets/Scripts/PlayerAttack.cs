@@ -99,7 +99,6 @@ public class PlayerAttack : MonoBehaviour
         AttackStateChanged(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
 
         rb.useGravity = false;
-        Time.timeScale = timeScale;
         JumpToTarget();
     }
 
@@ -110,7 +109,6 @@ public class PlayerAttack : MonoBehaviour
 
         isAttacking = false;
         rb.useGravity = true;
-        Time.timeScale = 1;
         AttackStateChanged(new AttackStateChangedInfo(null, isAttacking));
     }
 
