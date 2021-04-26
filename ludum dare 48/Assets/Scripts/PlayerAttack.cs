@@ -62,12 +62,6 @@ public class PlayerAttack : MonoBehaviour
         //Damage object
         attackTarget.Damage(new Damage(gameObject, damageAmount));
 
-        //Knockback object
-        var dirToEnemy = attackTarget.transform.position - transform.position;
-        dirToEnemy.y = 0.2f;
-        dirToEnemy.Normalize();
-        attackTarget.GetComponent<Rigidbody>().AddForce(dirToEnemy * knockbackForce);
-
         isAttacking = false;
         rb.constraints = savedConstraints;
 
