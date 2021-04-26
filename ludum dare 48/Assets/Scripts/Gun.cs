@@ -19,11 +19,15 @@ public class Gun : MonoBehaviour
 	private float currentCD = 0;
 	private int currentClipSize;
 	private bool reloading = false;
+	private bool isOwnedByPlayer = false;
 
 	protected virtual void Start()
 	{
 		currentClipSize = clipSize;
 		damage = new Damage(owner, damageAmount);
+		if (owner != null && owner.GetComponent<PlayerAttack>() != null)
+			isOwnedByPlayer = true;
+		HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
 	}
 	
 	// Method handles shooting cooldown, reloading and ammo wasting.
@@ -44,7 +48,7 @@ public class Gun : MonoBehaviour
 		currentCD = Time.time + shootCD;
 		currentClipSize--;
 
-		//TODO shoot sound and HUD
+		HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
 		muzzle.Play();
 		return true;
 	}
