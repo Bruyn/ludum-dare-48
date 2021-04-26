@@ -13,6 +13,18 @@ public class MovementScript : MonoBehaviour
     private Health _health;
     private PlayerAttack _playerAttack;
 
+    private bool isGameplayStarted = false;
+    
+    public void StartGameplay()
+    {
+        isGameplayStarted = true;
+    }
+
+    public void StartSmoking()
+    {
+        Animator.SetTrigger("startSmoking");
+    }
+    
     void Start()
     {
         _camera = Camera.main;
@@ -28,7 +40,7 @@ public class MovementScript : MonoBehaviour
             return;
         }
 
-        if (_playerAttack.IsKicking || !_playerAttack.IsKickLanded)
+        if (!isGameplayStarted || _playerAttack.IsKicking || !_playerAttack.IsKickLanded)
             return;
 
         float horAxis = Input.GetAxisRaw("Horizontal");
