@@ -5357,7 +5357,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movementspeed: 5
   Animator: {fileID: 2025197731594079655}
-  _animEventReceiver: {fileID: 3353602756378185213}
 --- !u!114 &678365944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,12 +5369,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d58a08e8eaea94fb74dc19d0e621ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gun: {fileID: 199993593}
+  _animEventReceiver: {fileID: 3353602756378185213}
   damageAmount: 100
   searchRadius: 2
   attackDistance: 1.1
   jumpSpeed: 25
   timeScale: 0.5
+  _animator: {fileID: 2025197731594079655}
+  _gunGameObject: {fileID: 8432900762421318247}
+  _rig: {fileID: 12519231}
+  meleeAtack: 1
   debugEnabled: 0
 --- !u!114 &835956282384829748
 MonoBehaviour:

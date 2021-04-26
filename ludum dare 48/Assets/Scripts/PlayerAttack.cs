@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sigtrap.Relays;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class AttackStateChangedInfo
 {
@@ -18,29 +19,51 @@ public class AttackStateChangedInfo
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Relay<AttackStateChangedInfo> OnAttackStateChanged = new Relay<AttackStateChangedInfo>();
-    
-    public Gun _gun;
-    
-    [Header("AttackStats")]
-    [SerializeField] private float damageAmount = 2f;
+    public CharAnimEventReceiver _animEventReceiver;
+
+    [Header("AttackStats")] [SerializeField]
+    private float damageAmount = 2f;
+
     [SerializeField] private float searchRadius = 2f;
     [SerializeField] private float attackDistance = 2f;
     [SerializeField] private float jumpSpeed = 3f;
     [SerializeField] private float timeScale = 0.5f;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _gunGameObject;
 
-    [Header("Debug")]
-    [SerializeField] private bool debugEnabled = false;
-    
+    [SerializeField] private Rig _rig;
+
+    [SerializeField] private bool meleeAtack = true;
+
+    [Header("Debug")] [SerializeField] private bool debugEnabled = false;
+
+    private Gun _gun;
     private Health attackTarget;
     private int attackCounter = 0;
     private bool isAttacking = false;
     private Vector3 jumpPosition;
     private Rigidbody rb;
-    
+
+    public bool IsKicking { get; private set; } = false;
+    public bool IsKickLanded { get; private set; } = true;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        _animEventReceiver.KickLanded.AddListener(KickLanded);
+        _gun = _gunGameObject.GetComponent<Gun>();
+        
+        if (meleeAtack)
+        {
+            _rig.weight = 0;
+            _gunGameObject.SetActive(false);
+        }        
+    }
+
+    void KickLanded(bool state)
+    {
+        IsKickLanded = true;
+        Debug.Log("Landed");
     }
 
     private void Enter()
@@ -50,7 +73,8 @@ public class PlayerAttack : MonoBehaviour
             return;
 
         isAttacking = true;
-        OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
+        AttackStateChanged(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
+
         rb.useGravity = false;
         Time.timeScale = timeScale;
         JumpToTarget();
@@ -64,8 +88,29 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = false;
         rb.useGravity = true;
         Time.timeScale = 1;
+        AttackStateChanged(new AttackStateChangedInfo(null, isAttacking));
+    }
 
-        OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(null, isAttacking));
+    void AttackStateChanged(AttackStateChangedInfo state)
+    {
+        _animator.SetBool("isKicking", state.State);
+        IsKicking = state.State;
+
+        if (IsKicking)
+        {
+            Vector3 dirToTarget = state.Target.transform.position - transform.position;
+            dirToTarget.Normalize();
+            dirToTarget.y = 0;
+
+            Quaternion rotation = Quaternion.LookRotation(dirToTarget);
+            transform.rotation = rotation;
+            transform.Rotate(Vector3.up, 90);
+        }
+        else
+        {
+            IsKickLanded = false;
+            Debug.Log("Not attacking");
+        }
     }
 
     private IEnumerator JumpCoroutine()
@@ -95,14 +140,12 @@ public class PlayerAttack : MonoBehaviour
 
             yield return null;
         }
-        
+
         rb.MovePosition(jumpPosition);
         jumpPosition = Vector3.zero;
 
         Exit();
     }
-    
-    
 
     private void Update()
     {
@@ -111,14 +154,32 @@ public class PlayerAttack : MonoBehaviour
             attackTarget = null;
             Enter();
         }
-        
+
         if (Input.GetMouseButton(0))
         {
-            _gun.Shoot();
+            if (meleeAtack)
+            {
+                ExecutePunch();
+            }
+            else
+            {
+                _gun.Shoot();
+            }
         }
     }
 
+    public void ExecutePunch()
+    {
+        _animator.SetBool("isPunching", true);
+    }
+
+    public bool IsPunching()
+    {
+        return _animator.GetBool("isPunching");
+    }
+
     #region FindTarget
+
     //Finds Health objects closest to mouse cursor by it having collider
     //returns NULL on no target attack nearby
     private Health GetNearestAttackObject()
@@ -153,6 +214,7 @@ public class PlayerAttack : MonoBehaviour
 
         return Vector3.zero;
     }
+
     #endregion
 
     #region AttackTarget
