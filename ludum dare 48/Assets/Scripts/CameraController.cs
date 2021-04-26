@@ -35,9 +35,9 @@ public class CameraController : MonoBehaviour
 
         if (targetPosition == transform.position && !IsActive)
         {
-            player.GetComponent<MovementScript>().StartGameplay();
             Canvas.GetComponent<UiSctipt>().HideMenu();
             IsActive = true;
+            StartCoroutine(StartGameplayCoroutine());
         }
         
         if (IsActive)
@@ -52,5 +52,11 @@ public class CameraController : MonoBehaviour
             fraction = Mathf.Clamp(fraction, 0, 1);
             transform.position = Vector3.Lerp(startPosition, targetPosition, fraction);
         }
+    }
+    
+    private IEnumerator StartGameplayCoroutine()
+    {
+        yield return new WaitForSeconds(6);
+        player.GetComponent<MovementScript>().StartGameplay();
     }
 }

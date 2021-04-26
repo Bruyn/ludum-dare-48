@@ -34,7 +34,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: smokingLoop
-  m_Speed: 1
+  m_Speed: 0.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5766491102676009947}
@@ -240,13 +240,13 @@ AnimatorStateMachine:
     m_Position: {x: 220, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4197886865356257776}
-    m_Position: {x: -320, y: 60, z: 0}
+    m_Position: {x: -430, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6625512906129552729}
-    m_Position: {x: -430, y: -30, z: 0}
+    m_Position: {x: -540, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3935822902813537961}
-    m_Position: {x: -260, y: -100, z: 0}
+    m_Position: {x: -370, y: -60, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -513,7 +513,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: smokingEnd
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -92877668559745511}
