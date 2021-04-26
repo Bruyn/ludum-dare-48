@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class CharAnimEventReceiver : MonoBehaviour
 {
-
     public Relay<bool> KickLanded = new Relay<bool>();
     public Relay<bool> OnStep = new Relay<bool>();
     public Relay<bool> OnPunchFinished = new Relay<bool>();
+
+    public Relay<bool> OnPunch = new Relay<bool>();
 
     void OnKickLanded()
     {
@@ -25,4 +26,8 @@ public class CharAnimEventReceiver : MonoBehaviour
         OnPunchFinished.Dispatch(true);
     }
 
+    void Punch()
+    {
+        OnPunch.Dispatch(true);
+    }
 }

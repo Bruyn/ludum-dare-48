@@ -10,7 +10,7 @@ public class HasEnemy : Decorator
 
     public override bool CanExecute()
     {
-        return Enemy.Value != null;
+        return Enemy.Value != null && !Enemy.Value.GetComponent<Health>().IsDead();
     }
 
     public override void OnChildExecuted(TaskStatus childStatus)
