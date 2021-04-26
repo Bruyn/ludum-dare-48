@@ -112,6 +112,7 @@ public class PlayerAttack : MonoBehaviour
         AttackStateChanged(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
 
         rb.useGravity = false;
+        SoundManager.Instance.PlayKarateSound();
         JumpToTarget();
     }
 
@@ -209,6 +210,11 @@ public class PlayerAttack : MonoBehaviour
 
     public void ExecutePunch()
     {
+        if (!IsPunching())
+        {
+            SoundManager.Instance.PlayWooshSound();
+        }
+
         _animator.SetBool("isPunching", true);
     }
 

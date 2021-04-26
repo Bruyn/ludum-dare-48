@@ -27,6 +27,7 @@ public class AiBehaviourTalker : MonoBehaviour
     public void ExecutePunch()
     {
         Animator.SetBool("isPunching", true);
+        SoundManager.Instance.PlayWooshSound();
     }
 
     void Punch(bool state)
