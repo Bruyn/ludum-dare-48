@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         
-        AnimEventReceiver.OnStep.AddListener(StepHappend);
+        //AnimEventReceiver.OnStep.AddListener(StepHappend);
     }
 
     void StepHappend(bool _)

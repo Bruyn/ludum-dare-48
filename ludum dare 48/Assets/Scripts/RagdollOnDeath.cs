@@ -5,7 +5,7 @@ public class RagdollOnDeath : MonoBehaviour
 {
     [SerializeField] private Animator mainAnimator;
     [SerializeField] private GameObject gunToHide;
-    
+
     private Health health;
 
     private void Start()
@@ -17,6 +17,9 @@ public class RagdollOnDeath : MonoBehaviour
     private void EnableRagdoll(Damage deathDamage)
     {
         mainAnimator.enabled = false;
-        gunToHide.SetActive(false);
+        if (gunToHide != null)
+        {
+            gunToHide.SetActive(false);
+        }
     }
 }

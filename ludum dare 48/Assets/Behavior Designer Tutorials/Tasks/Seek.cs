@@ -93,15 +93,12 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
         {
             // The path hasn't been computed yet if the path is pending.
             float remainingDistance;
-            if (navMeshAgent.hasPath)
-            {
+            if (navMeshAgent.pathPending) {
+                remainingDistance = float.PositiveInfinity;
+            } else {
                 remainingDistance = navMeshAgent.remainingDistance;
             }
-            else
-            {
-                remainingDistance = float.PositiveInfinity;
-            }
-
+            
             return (remainingDistance <= arriveDistance2.Value || (transform.position - Target()).sqrMagnitude <=
                 (arriveDistance2.Value * arriveDistance2.Value) && (target.Value == null || LineOfSight(target.Value)));
         }
@@ -114,6 +111,7 @@ namespace BehaviorDesigner.Runtime.Tasks.Tutorials
             if (navMeshAgent.hasPath)
             {
                 navMeshAgent.isStopped = true;
+                navMeshAgent.velocity = Vector3.zero;
             }
         }
 
