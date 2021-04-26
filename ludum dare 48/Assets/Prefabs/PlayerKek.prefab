@@ -10937,6 +10937,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movementspeed: 5
   Animator: {fileID: 2025197731594079655}
+  isGameplayStarted: 1
 --- !u!114 &678365944
 MonoBehaviour:
   m_ObjectHideFlags: 0

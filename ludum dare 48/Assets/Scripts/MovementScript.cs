@@ -13,7 +13,7 @@ public class MovementScript : MonoBehaviour
     private Health _health;
     private PlayerAttack _playerAttack;
 
-    private bool isGameplayStarted = false;
+    public bool isGameplayStarted;
     
     public void StartGameplay()
     {

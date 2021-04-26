@@ -9811,78 +9811,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 54258078254854882, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.0007538942
-      objectReference: {fileID: 0}
-    - target: {fileID: 54258078254854882, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.2399069
-      objectReference: {fileID: 0}
-    - target: {fileID: 54258078254854882, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.028114144
-      objectReference: {fileID: 0}
-    - target: {fileID: 149391100774403519, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.00000020489097
-      objectReference: {fileID: 0}
-    - target: {fileID: 149391100774403519, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.24889302
-      objectReference: {fileID: 0}
-    - target: {fileID: 149391100774403519, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.000000059604645
-      objectReference: {fileID: 0}
-    - target: {fileID: 836127106243487911, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.0042526103
-      objectReference: {fileID: 0}
-    - target: {fileID: 836127106243487911, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.051846776
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438754092605293139, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.17101756
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438754092605293139, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.23525137
-      objectReference: {fileID: 0}
-    - target: {fileID: 2438754092605293139, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.03371431
-      objectReference: {fileID: 0}
-    - target: {fileID: 3419452990645908427, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.17618848
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409819450968572695, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.089495465
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409819450968572695, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.061721094
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409819450968572695, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.018783696
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968639456957946277, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.089494996
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968639456957946277, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: -0.06172116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4968639456957946277, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.046606798
-      objectReference: {fileID: 0}
     - target: {fileID: 5015259733069798985, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -9927,45 +9855,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5015259733069798988, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
+      propertyPath: isGameplayStarted
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5015259733069798989, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
       propertyPath: m_Name
       value: PlayerKek
-      objectReference: {fileID: 0}
-    - target: {fileID: 6955938178629844229, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.0000001937151
-      objectReference: {fileID: 0}
-    - target: {fileID: 6955938178629844229, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.47003135
-      objectReference: {fileID: 0}
-    - target: {fileID: 6955938178629844229, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.00000020861626
-      objectReference: {fileID: 0}
-    - target: {fileID: 8483084938695642456, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.00000016344711
-      objectReference: {fileID: 0}
-    - target: {fileID: 8483084938695642456, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.24891171
-      objectReference: {fileID: 0}
-    - target: {fileID: 8483084938695642456, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: 0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 8927437607041056780, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.00000037252903
-      objectReference: {fileID: 0}
-    - target: {fileID: 8927437607041056780, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 0.4709124
-      objectReference: {fileID: 0}
-    - target: {fileID: 8927437607041056780, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
-      propertyPath: m_ConnectedAnchor.z
-      value: -0.0000005066395
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cad20638544bf74a815bee3f7e201e1, type: 3}
