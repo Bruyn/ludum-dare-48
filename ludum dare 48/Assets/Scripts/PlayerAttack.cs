@@ -27,12 +27,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float searchRadius = 2f;
     [SerializeField] private float attackDistance = 2f;
     [SerializeField] private float jumpSpeed = 3f;
-    [SerializeField] private float knockbackForce = 10f;
+    [SerializeField] private float timeScale = 0.5f;
 
     [Header("Debug")]
     [SerializeField] private bool debugEnabled = false;
-
-    private RigidbodyConstraints savedConstraints;
+    
     private Health attackTarget;
     private int attackCounter = 0;
     private bool isAttacking = false;
@@ -42,7 +41,6 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        savedConstraints = rb.constraints;
     }
 
     private void Enter()
@@ -53,7 +51,8 @@ public class PlayerAttack : MonoBehaviour
 
         isAttacking = true;
         OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(attackTarget.gameObject, isAttacking));
-        rb.constraints = savedConstraints | RigidbodyConstraints.FreezePositionY;
+        rb.useGravity = false;
+        Time.timeScale = timeScale;
         JumpToTarget();
     }
 
@@ -63,7 +62,8 @@ public class PlayerAttack : MonoBehaviour
         attackTarget.Damage(new Damage(gameObject, damageAmount));
 
         isAttacking = false;
-        rb.constraints = savedConstraints;
+        rb.useGravity = true;
+        Time.timeScale = 1;
 
         OnAttackStateChanged.Dispatch(new AttackStateChangedInfo(null, isAttacking));
     }
@@ -76,12 +76,11 @@ public class PlayerAttack : MonoBehaviour
         while (distance > 0.25f)
         {
             Vector3 direction = jumpPosition - transform.position;
-            direction.y = transform.position.y < 1 ? 1 : 0;
+            direction.y = transform.position.y < 1.8f ? 1 : 0;
             direction.Normalize();
-            Vector3 posToMove = transform.position + direction * jumpSpeed;
+            Vector3 posToMove = transform.position + direction * jumpSpeed * Time.fixedDeltaTime;
             rb.MovePosition(posToMove);
 
-            
             playerPos = transform.position;
             playerPos.y = 0;
             jumpPosition.y = 0;
