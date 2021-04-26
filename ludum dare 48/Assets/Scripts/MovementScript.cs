@@ -13,6 +13,18 @@ public class MovementScript : MonoBehaviour
     private Health _health;
     private PlayerAttack _playerAttack;
 
+    public bool isGameplayStarted;
+    
+    public void StartGameplay()
+    {
+        isGameplayStarted = true;
+    }
+
+    public void StartSmoking()
+    {
+        Animator.SetTrigger("startSmoking");
+    }
+    
     void Start()
     {
         _camera = Camera.main;
@@ -27,8 +39,8 @@ public class MovementScript : MonoBehaviour
         {
             return;
         }
-        
-        if (_playerAttack.IsKicking || !_playerAttack.IsKickLanded)
+
+        if (!isGameplayStarted || _playerAttack.IsKicking || !_playerAttack.IsKickLanded)
             return;
 
         float horAxis = Input.GetAxisRaw("Horizontal");
@@ -85,4 +97,10 @@ public class MovementScript : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + animDir);
     }
+
+    public Vector3 GetMovementVector()
+    {
+        return movement;
+    }
+
 }

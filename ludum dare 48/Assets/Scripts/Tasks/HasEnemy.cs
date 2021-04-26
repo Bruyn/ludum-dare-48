@@ -5,9 +5,6 @@ public class HasEnemy : Decorator
 {
     public SharedGameObject Enemy;
     
-    // The status of the child after it has finished running.
-    private TaskStatus executionStatus = TaskStatus.Inactive;
-
     public override bool CanExecute()
     {
         return Enemy.Value != null && !Enemy.Value.GetComponent<Health>().IsDead();

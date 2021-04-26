@@ -1,32 +1,53 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundManager : MonoBehaviour
 {
-    public CharAnimEventReceiver AnimEventReceiver;
-    
-    public AudioClip shotSound;
-    public AudioClip footStep;
+    public static SoundManager Instance;
 
-    private AudioSource _audioSource;
-    
-    private void Start()
+    [SerializeField] private List<AudioClip> shotClips = new List<AudioClip>();
+    [SerializeField] private float shotVolume = .15f;
+
+    private List<AudioSource> audioSources = new List<AudioSource>();
+
+    private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
+        if (Instance != null)
+        {
+            Debug.LogError("SOMETHING IS BAAAD!!!!");
+            return;
+        }
         
-        //AnimEventReceiver.OnStep.AddListener(StepHappend);
+        Instance = this;
     }
 
-    void StepHappend(bool _)
+    public void PlayShotSound()
     {
-        _audioSource.PlayOneShot(footStep);
+        int index = Random.Range(0, shotClips.Count);
+        PlaySound(shotClips[index], shotVolume);
     }
     
-    // Update is called once per frame
-    void Update()
+    public void PlaySound(AudioClip clipToPlay, float volume)
     {
-        
+        AudioSource audioSource = GetAudioSource();
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
+        audioSource.clip = clipToPlay;
+        audioSource.volume = volume;
+        audioSource.Play();
+    }
+
+    private AudioSource GetAudioSource()
+    {
+        foreach (var audioSource in audioSources)
+        {
+            if (!audioSource.isPlaying)
+                return audioSource;
+        }
+
+        AudioSource newSource = gameObject.AddComponent<AudioSource>();
+        audioSources.Add(newSource);
+        return newSource;
     }
 }

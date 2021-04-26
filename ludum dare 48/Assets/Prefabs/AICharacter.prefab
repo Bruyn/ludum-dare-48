@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAnimator: {fileID: 2265344745012371925}
   gunToHide: {fileID: 85621535850727367}
-  mainCollider: {fileID: 0}
+  mainCollider: {fileID: 106937546645518381}
   mainRigidbody: {fileID: 0}
 --- !u!1 &321973150449188397
 GameObject:
