@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 2245018438471805856}
   - component: {fileID: 1649474281916177830}
   - component: {fileID: 1649474281916177827}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AICharacterPuncher
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -697,6 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainAnimator: {fileID: 643988583844545626}
   gunToHide: {fileID: 0}
+  mainCollider: {fileID: 0}
+  mainRigidbody: {fileID: 0}
 --- !u!114 &1649474281916177830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -762,6 +764,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 643988583844545626}
+  _rightHand: {fileID: 1634471791641614160}
+  meleeAtackRadius: 0.5
+  meleeAtackDamageAmount: 10
+  _animEventReceiver: {fileID: 7526101564381870178}
 --- !u!1 &1879308690892326262
 GameObject:
   m_ObjectHideFlags: 0

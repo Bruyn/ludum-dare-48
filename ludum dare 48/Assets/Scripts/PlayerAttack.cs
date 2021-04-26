@@ -30,10 +30,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float timeScale = 0.5f;
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject _gunGameObject;
-
     [SerializeField] private Rig _rig;
 
+
+    [SerializeField] private GameObject _rightHand;
     [SerializeField] private bool meleeAtack = true;
+    [SerializeField] private float meleeAtackRadius = 0.5f;
+    [SerializeField] private float meleeAtackDamageAmount = 10f;
 
     [Header("Debug")] [SerializeField] private bool debugEnabled = false;
 
@@ -45,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody rb;
 
     private Health _health;
-    
+
     public bool IsKicking { get; private set; } = false;
     public bool IsKickLanded { get; private set; } = true;
 
@@ -53,20 +56,37 @@ public class PlayerAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         _animEventReceiver.KickLanded.AddListener(KickLanded);
+        _animEventReceiver.OnPunch.AddListener(Punch);
         _gun = _gunGameObject.GetComponent<Gun>();
         _health = GetComponent<Health>();
-        
+
         if (meleeAtack)
         {
             _rig.weight = 0;
             _gunGameObject.SetActive(false);
-        }        
+        }
+    }
+
+    private void OnDestroy()
+    {
+        _animEventReceiver.KickLanded.RemoveListener(KickLanded);
+        _animEventReceiver.OnPunch.RemoveListener(Punch);
     }
 
     void KickLanded(bool state)
     {
         IsKickLanded = true;
-        Debug.Log("Landed");
+    }
+    
+    void Punch(bool state)
+    {
+        Vector3 position = _rightHand.transform.position;
+        Collider[] hitColliders = Physics.OverlapSphere(position, meleeAtackRadius, LayerMask.GetMask("AI"));
+        foreach (var hitCollider in hitColliders)
+        {
+            Damage damage = new Damage(gameObject, meleeAtackDamageAmount);
+            hitCollider.gameObject.GetComponent<Health>().Damage(damage);
+        }
     }
 
     private void Enter()
@@ -112,7 +132,6 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             IsKickLanded = false;
-            Debug.Log("Not attacking");
         }
     }
 
@@ -156,7 +175,7 @@ public class PlayerAttack : MonoBehaviour
         {
             return;
         }
-        
+
         if (!isAttacking && Input.GetMouseButtonDown(1))
         {
             attackTarget = null;
