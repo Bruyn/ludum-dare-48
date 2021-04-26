@@ -49,6 +49,7 @@ public class Gun : MonoBehaviour
 		currentClipSize--;
 
 		HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
+		SoundManager.Instance.PlayShotSound();
 		muzzle.Play();
 		return true;
 	}
