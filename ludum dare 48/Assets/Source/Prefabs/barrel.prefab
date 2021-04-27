@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1097067165419239971}
   - component: {fileID: 4077529332610889094}
   - component: {fileID: 2266080386361655628}
-  - component: {fileID: 767890209}
   - component: {fileID: 767890210}
   - component: {fileID: 767890211}
+  - component: {fileID: 767890209}
   m_Layer: 0
   m_Name: barrel
   m_TagString: Untagged
@@ -84,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &767890209
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320389351185752217}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8691780276856062721, guid: cf7f722e319bfee448aa124fbd35a875, type: 3}
 --- !u!114 &767890210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,3 +113,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensedDamageTypes: 02000000
   maxHealth: 3
+--- !u!65 &767890209
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320389351185752217}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.020000005, z: 1.102658}
+  m_Center: {x: 0, y: -0.0000000044463753, z: -0.13931192}
