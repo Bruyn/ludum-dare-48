@@ -40,8 +40,12 @@ public class RespawnController : MonoBehaviour
             _health.currentHealth = _health.maxHealth;
             _ragdoll.DisableRagdoll();
             respawnText.SetActive(false);
+
+            if (!GetComponent<PlayerAttack>().meleeAtack)
+            {
+                Gun.SetActive(true);
+            }
             animator.enabled = true;
-            Gun.SetActive(true);
         }
     }
 }

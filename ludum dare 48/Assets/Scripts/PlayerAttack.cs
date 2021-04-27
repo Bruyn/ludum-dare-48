@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
 
 
     [SerializeField] private GameObject _rightHand;
-    [SerializeField] private bool meleeAtack = true;
+    [SerializeField] public bool meleeAtack = true;
     [SerializeField] private bool isKickEnabled = false;
     [SerializeField] private float meleeAtackRadius = 0.5f;
     [SerializeField] private float meleeAtackDamageAmount = 10f;
