@@ -69,6 +69,7 @@ public class RagdollOnDeath : MonoBehaviour
         
         foreach (var rigidbody in allRigidbodies)
         {
+            rigidbody.mass = 0.1f;
             rigidbody.isKinematic = false;
             rigidbody.velocity = velocity;
         }

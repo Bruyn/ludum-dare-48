@@ -151,9 +151,12 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             IsKickLanded = false;
+            startTime = Time.time;
         }
     }
 
+    private float startTime;
+    
     private IEnumerator JumpCoroutine()
     {
         var playerPos = transform.position;
@@ -190,6 +193,11 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (!IsKickLanded && (Time.time - startTime) > 2)
+        {
+            IsKickLanded = true;
+        }
+        
         if (_health.IsDead())
         {
             return;
