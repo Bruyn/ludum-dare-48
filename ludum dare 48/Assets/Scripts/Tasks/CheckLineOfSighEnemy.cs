@@ -11,7 +11,7 @@ public class CheckLineOfSighEnemy : Action
 
     public override TaskStatus OnUpdate()
     {
-        if (!LineOfSight(enemy.Value))
+        if (!gameObject.GetComponent<AIMovement>().isEnemyForced && !LineOfSight(enemy.Value))
         {
             targetPostion.Value = enemy.Value.transform.position;
             enemy.Value = null;

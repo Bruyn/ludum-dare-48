@@ -31,6 +31,7 @@ public class CameraController : MonoBehaviour
             targetPosition = player.transform.position - positionOffset;
             startPosition = transform.position;
             player.GetComponent<MovementScript>().Animator.SetTrigger("stopSmoking");
+            MusicManager.Instance.PlayMusic(1);
         }
 
         if (targetPosition == transform.position && !IsActive)

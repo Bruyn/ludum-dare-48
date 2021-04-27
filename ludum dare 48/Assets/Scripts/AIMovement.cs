@@ -10,6 +10,8 @@ public class AIMovement : MonoBehaviour
 
     private Health _health;
     
+    public bool isEnemyForced = false;
+    
     // Start is called before the first frame update
     void Start()
     {
