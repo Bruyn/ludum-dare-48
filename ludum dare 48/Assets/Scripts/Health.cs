@@ -10,9 +10,9 @@ public class Health : MonoBehaviour
 
     public List<DamageType> sensedDamageTypes = new List<DamageType>();
     
-    [SerializeField] private float maxHealth = 3f;
-    
-    private float currentHealth = 0f;
+    public float maxHealth = 3f;
+
+    public float currentHealth = 0f;
 
     private void Start()
     {

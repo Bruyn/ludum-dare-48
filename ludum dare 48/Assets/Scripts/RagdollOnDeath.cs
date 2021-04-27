@@ -15,6 +15,11 @@ public class RagdollOnDeath : MonoBehaviour
 
     private void Start()
     {
+        DisableRagdoll();
+    }
+
+    public void DisableRagdoll()
+    {
         health = GetComponent<Health>();
         health.OnDeath.AddOnce(EnableRagdoll);
 
