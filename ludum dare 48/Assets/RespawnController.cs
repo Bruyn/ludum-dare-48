@@ -44,6 +44,7 @@ public class RespawnController : MonoBehaviour
             if (!GetComponent<PlayerAttack>().meleeAtack)
             {
                 Gun.SetActive(true);
+                GetComponent<PlayerAttack>().ResetGun();
             }
             animator.enabled = true;
         }

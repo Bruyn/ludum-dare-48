@@ -59,6 +59,11 @@ public class PlayerAttack : MonoBehaviour
         isKickEnabled = true;
     }
 
+    public void ResetGun()
+    {
+        _gun.ResetGun();
+    }
+
     public void EnableGun()
     {
         meleeAtack = false;

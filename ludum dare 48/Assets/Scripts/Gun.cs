@@ -31,6 +31,12 @@ public class Gun : MonoBehaviour
 			HudController.Instance.SetAmmoCount(currentClipSize, clipSize);
 		}
 	}
+
+	public void ResetGun()
+	{
+		reloading = false;
+		currentClipSize = clipSize;
+	}
 	
 	// Method handles shooting cooldown, reloading and ammo wasting.
 	// Returns true if the shot was successful.
