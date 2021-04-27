@@ -4878,6 +4878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a067e293aeb01bf4ea8f203fb7bfa7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensedDamageTypes: 03000000
   maxHealth: 3
 --- !u!1 &5428656622030178119
 GameObject:
