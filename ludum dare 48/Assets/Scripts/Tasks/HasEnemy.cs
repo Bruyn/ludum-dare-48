@@ -1,5 +1,6 @@
 using BehaviorDesigner.Runtime;
 using BehaviorDesigner.Runtime.Tasks;
+using UnityEngine;
 
 public class HasEnemy : Decorator
 {
@@ -7,6 +8,11 @@ public class HasEnemy : Decorator
     
     public override bool CanExecute()
     {
+        if (Enemy.Value == null && gameObject.GetComponent<AIMovement>().isEnemyForced)
+        {
+            Enemy.Value = GameObject.FindGameObjectWithTag("Player");
+        }
+        
         return Enemy.Value != null && !Enemy.Value.GetComponent<Health>().IsDead();
     }
 
