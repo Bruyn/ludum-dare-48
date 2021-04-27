@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Ludiq.Peek;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RespawnController : MonoBehaviour
 {

@@ -37,7 +37,12 @@ public class AiBehaviourTalker : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             Damage damage = new Damage(gameObject, meleeAtackDamageAmount, DamageType.Fist);
-            hitCollider.gameObject.GetComponent<Health>().Damage(damage);
+
+            Health health = hitCollider.gameObject.GetComponent<Health>();
+            if (health != null)
+            {
+                health.Damage(damage);   
+            }
         }
     }
 
