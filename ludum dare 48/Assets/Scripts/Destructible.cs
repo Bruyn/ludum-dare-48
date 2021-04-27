@@ -21,7 +21,7 @@ public class Destructible : MonoBehaviour
     {
         Vector3 velocity = (transform.position - deathDamage.Damager.transform.position);
         velocity.Normalize();
-        velocity *= 3f;
+        velocity *= 4f;
 
         bool isDestroyed = true;
 

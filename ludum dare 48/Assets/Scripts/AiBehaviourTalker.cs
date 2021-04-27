@@ -36,7 +36,7 @@ public class AiBehaviourTalker : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(position, meleeAtackRadius, LayerMask.GetMask("Player"));
         foreach (var hitCollider in hitColliders)
         {
-            Damage damage = new Damage(gameObject, meleeAtackDamageAmount);
+            Damage damage = new Damage(gameObject, meleeAtackDamageAmount, DamageType.Fist);
             hitCollider.gameObject.GetComponent<Health>().Damage(damage);
         }
     }

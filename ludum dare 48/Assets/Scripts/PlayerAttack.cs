@@ -98,7 +98,7 @@ public class PlayerAttack : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(position, meleeAtackRadius, LayerMask.GetMask("AI"));
         foreach (var hitCollider in hitColliders)
         {
-            Damage damage = new Damage(gameObject, meleeAtackDamageAmount);
+            Damage damage = new Damage(gameObject, meleeAtackDamageAmount, DamageType.Fist);
             hitCollider.gameObject.GetComponent<Health>().Damage(damage);
         }
     }
@@ -120,7 +120,7 @@ public class PlayerAttack : MonoBehaviour
     private void Exit()
     {
         //Damage object
-        attackTarget.Damage(new Damage(gameObject, damageAmount));
+        attackTarget.Damage(new Damage(gameObject, damageAmount, DamageType.Kick));
 
         isAttacking = false;
         rb.useGravity = true;

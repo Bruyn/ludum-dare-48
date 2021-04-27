@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
 	protected virtual void Start()
 	{
 		currentClipSize = clipSize;
-		damage = new Damage(owner, damageAmount);
+		damage = new Damage(owner, damageAmount, DamageType.Bulet);
 		if (owner != null && owner.GetComponent<PlayerAttack>() != null)
 		{
 			isOwnedByPlayer = true;
@@ -41,7 +41,7 @@ public class Gun : MonoBehaviour
 			Reload();
 			return false;
 		}
-
+		
 		if (currentCD > Time.time)
 			return false;
 		if (reloading)

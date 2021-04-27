@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public Relay<Damage> OnDeath = new Relay<Damage>();
 
     [SerializeField] private float maxHealth = 3f;
-
+    
     private float currentHealth = 0f;
 
     private void Start()
@@ -18,6 +18,8 @@ public class Health : MonoBehaviour
 
     public void Damage(Damage damage)
     {
+        //damage.DamageType
+        
         currentHealth -= damage.Amount;
         OnDamage.Dispatch(damage);
         if (IsDead())
