@@ -11191,6 +11191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnText: {fileID: 954472059}
   animator: {fileID: 2025197731594079655}
+  Gun: {fileID: 8432900762421318247}
 --- !u!1 &5055740202574321836
 GameObject:
   m_ObjectHideFlags: 0
