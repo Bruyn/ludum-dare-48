@@ -23,7 +23,8 @@ public class EnemySpawner : MonoBehaviour
         while (spawnedEnemiesCount < enemyCount)
         {
             Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Count)].position;
-            Instantiate(enemyToSpawn, spawnPosition, quaternion.identity);
+            GameObject enemy = Instantiate(enemyToSpawn, spawnPosition, quaternion.identity);
+            enemy.GetComponent<AIMovement>().isEnemyForced = true;
             //Force move to player
             yield return new WaitForSeconds(spawnInterval);
             spawnedEnemiesCount++;
